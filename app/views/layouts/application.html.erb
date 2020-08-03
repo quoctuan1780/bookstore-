@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Laravel </title>
+	<link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="assets/dest/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/dest/vendors/colorbox/example3/colorbox.css">
+	<link rel="stylesheet" href="assets/dest/rs-plugin/css/settings.css">
+	<link rel="stylesheet" href="assets/dest/rs-plugin/css/responsive.css">
+	<link rel="stylesheet" title="style" href="assets/dest/css/style.css">
+	<link rel="stylesheet" href="assets/dest/css/animate.css">
+	<link rel="stylesheet" title="style" href="assets/dest/css/huong-style.css">
+</head>
+<body>
+
+  <%=render "layouts/header"%>
+  <%=yield%>
+  <%=render "layouts/footer"%>
+
+	<!-- include js files -->
+	<script src="assets/dest/js/jquery.js"></script>
+	<script src="assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
+	<script src="assets/dest/vendors/colorbox/jquery.colorbox-min.js"></script>
+	<script src="assets/dest/vendors/animo/Animo.js"></script>
+	<script src="assets/dest/vendors/dug/dug.js"></script>
+	<script src="assets/dest/js/scripts.min.js"></script>
+	<script src="assets/dest/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script src="assets/dest/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	<script src="assets/dest/js/waypoints.min.js"></script>
+	<script src="assets/dest/js/wow.min.js"></script>
+	<!--customjs-->
+	<script src="assets/dest/js/custom2.js"></script>
+	<script>
+	$(document).ready(function($) {    
+		$(window).scroll(function(){
+			if($(this).scrollTop()>150){
+			$(".header-bottom").addClass('fixNav')
+			}else{
+				$(".header-bottom").removeClass('fixNav')
+			}}
+		)
+	})
+	</script>
+</body>
+</html>
