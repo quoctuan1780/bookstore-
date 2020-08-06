@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tensach: MyString
+  mota: MyString
+  giaban: 1
+  hinhanh: MyString
+
+two:
+  tensach: MyString
+  mota: MyString
+  giaban: 1
+  hinhanh: MyString

@@ -1,0 +1,83 @@
+<div class="container">
+    <div id="content">
+        <%if !notice.nil? && notice == 'Đặt hàng thành công'%>
+        <div class="alert-success"><%=notice%></div>
+        <%end%>
+        <%= form_for @dathang, url:{action: :datmua, controller: :dathang}, method: :post do |f| %>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Thông tin khách hàng</h4>
+                    <div class="space20">&nbsp;</div>
+                    <%= f.hidden_field :khachhang_id, autofocus: true, :class => "form-control", :value => @khachhang[0].id%>
+                    <div class="form-block">
+                        <label for="tenkh">Tên khách hàng</label>
+                        <%= f.text_field :tenkh, autofocus: true, :class => "form-control", :value => @khachhang[0].tenkh, :disabled => true%>
+                    </div>
+
+                    <div class="form-block">
+                        <label for="sodt">Số điện thoại</label>
+                        <%= f.text_field :sodt, autofocus: true, :class => "form-control", :value => @khachhang[0].sodt, :disabled => true%>
+                    </div>
+
+                    <div class="form-block">
+                        <label for="diachigh">Dịa chỉ giao hàng</label>
+                        <%= f.text_field :diachigh, autofocus: true, :class => "form-control", :value => @khachhang[0].diachi, required: true%>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="your-order">
+                        <div class="your-order-head"><h5>Đơn hàng của bạn</h5></div>
+                        <div class="your-order-body">
+                            <div class="your-order-item">
+                                <div>
+                                <!--  one item	 -->
+                                <%@donhang.each do |dh|%>
+                                    <div class="media">
+                                        <img width="35%" src="<%=image_path("sach/#{dh['hinhanh']}")%>" alt="" class="pull-left">
+                                        <div class="media-body">
+                                            <p class="font-large"><%=dh['tensach']%></p>
+                                            <span class="color-gray your-order-info">So luong: <%=dh['soluong']%></span>
+                                            <span class="color-gray your-order-info">Gia: <%=dh['giaban']%></span>
+                                        </div>
+                                    </div>
+                                <%end%>
+                                <!-- end one item -->
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="your-order-item">
+                                <div class="pull-left"><p class="your-order-f18">Tổng:</p></div>
+                                <div class="pull-right"><h5 class="color-black"><%=@tongtien%> VNĐ</h5></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="your-order-head"><h5>Hình thức thanh toán</h5></div>
+                        
+                        <div class="your-order-body">
+                            <ul class="payment_methods methods">
+                                <li class="payment_method_bacs">
+                                    <%= f.radio_button :httt, "COD", :checked => true %>
+                                    <label for="payment_method_bacs">COD </label>
+                                    <div class="payment_box payment_method_bacs" style="display: block;">
+                                        Thanh toán khi nhận hàng
+                                    </div>						
+                                </li>
+
+                                <li class="payment_method_cheque">
+                                    <%= f.radio_button :httt, "ATM"%>
+                                    <label for="payment_method_cheque">ATM </label>
+                                    <div class="payment_box payment_method_cheque" style="display: block;">
+                                        Xin hãy chuyển khoản đến <br> Số tài khoản: 168425140326 <br> Chủ tài khoản: BookStore <br> Ngân hàng: BIDV
+                                        <br> Chi nhánh: Bến thành
+                                    </div>						
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="text-center"><%= f.submit "Đặt hàng", :class => "btn btn-primary"%></div>
+                    </div> <!-- .your-order -->
+                </div>
+            </div>
+        <%end%>
+    </div> <!-- #content -->
+</div> <!-- .container -->

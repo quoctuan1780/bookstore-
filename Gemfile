@@ -26,8 +26,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
+#  gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', platform: :ruby
+gem 'will_paginate', ' >= 3.0.7'
+gem 'will_paginate-bootstrap', '>= 1.0.0'
+gem 'devise'
+gem 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

@@ -1,0 +1,2 @@
+class Theloai < ApplicationRecord
+end

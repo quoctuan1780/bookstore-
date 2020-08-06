@@ -1,0 +1,55 @@
+<div class="container">
+	<div id="content" class="space-top-none">
+			<div class="space20">&nbsp;</div>
+                <div class="row">
+                <div class="col-lg-4">
+                    <div style="align-content: center; box-shadow: 0px 0px 3px 0px rgba(88, 88, 88, 0.3); padding: 5px 10px; text-shadow: darkgrey">
+                        <h3>Thông tin khách hàng</h3>
+                        <label>Họ tên: <%=@khachhang[0].tenkh%></label>
+                        <br>
+                        <label>Giới tính: <%=@khachhang[0].gioitinh%></label>
+                        <br>
+                        <label>Địa chỉ: <%=@khachhang[0].diachi%></label>
+                        <br>
+                        <label>Điện thoại: <%=@khachhang[0].sodt%></label>
+                        <br>
+                        <%# <a href="/users/password/edit" style="color: #4169E1">Đổi mật khẩu</a> %>
+                        <%= link_to "Đổi mật khẩu", edit_user_registration_path %>
+                        
+                        <%= link_to "Đăng xuất", "/users/sign_out", method: :get %>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div style="align-content: center; box-shadow: 0px 0px 3px 0px rgba(88, 88, 88, 0.3); padding: 5px 10px; text-shadow: darkgrey">
+                    <h3>Cập nhật thông tin</h3>
+                       <%= form_for @khUpdate, url:{action: :update, controller: :khachhang}, method: :post do |f| %>
+                            <%= f.hidden_field :id, :value => @khachhang[0].id%>
+                            <div class="form-group">
+                                <label for="tenkh">Tên khách hàng</label>
+                                <%= f.text_field :tenkh, autofocus: true, :class => "form-control", :value => @khachhang[0].tenkh, required: true%>
+                            </div>
+                            <div class="form-group">
+                                <label for="gioitinh">Giới tính</label>
+                                <%= f.select :gioitinh, ["Nam", "Nu"], :class => "form-control", required: true%>
+                            </div>
+                            <div class="form-group">
+                                <label for="diachi">Địa chỉ</label>
+                                <%= f.text_field :diachi, autofocus: true, :class => "form-control", :value => @khachhang[0].diachi, required: true%>
+                            </div>
+                            <div class="form-group">
+                                <label for="sodt">Số điện thoại</label>
+                                <%= f.text_field :sodt, autofocus: true, :class => "form-control", :value => @khachhang[0].sodt, required: true%>
+                            </div>
+                            <div class="form-group">
+                                <%= f.submit "Cập nhật", :class => "btn btn-primary"%>
+                            </div>
+                       <%end%>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+		</div> <!-- .main-content -->
+	</div> <!-- #content -->
+</div> <!-- .container -->

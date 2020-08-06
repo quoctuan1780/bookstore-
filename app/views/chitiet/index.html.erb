@@ -1,0 +1,219 @@
+<div class="inner-header">
+    <div class="container">
+        <div class="pull-left">
+            <h6 class="inner-title">Sản phẩm <%=@sach[0].tensach%></h6>
+        </div>
+        <div class="pull-right">
+            <div class="beta-breadcrumb font-large">
+                <a href="/home/index">Trang chủ</a> / <span>Thông tin chi tiết sản phẩm</span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div>
+    <div class="container">
+        <div id="content">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <%= image_tag "sach/#{@sach[0].hinhanh}", :height => "250px"%>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="single-item-body">
+                                <p class="single-item-title"><h3><%=@sach[0].tensach%></h3></p>
+                                <p class="single-item-price">
+                                    <span class="flash-sale"><%=@sach[0].giaban%> VND</span>
+                                </p>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="space20">&nbsp;</div>
+
+                            <div class="single-item-desc">
+                                <p><%=@sach[0].mota%></p>
+                            </div>
+                            <div class="space20">&nbsp;</div>
+
+                            <p>Số lượng:</p>
+                            <div class="single-item-options">
+
+                                <div style="display: inline-flex">
+                                    <input type="number" class="form-control text-center" value="1" id="soluong" style="width: 60px; height: 35px">
+                                    <a class="add-to-cart" href="javascript:void(0)" onclick="addMulticart(<%=@sach[0].id%>)">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space40">&nbsp;</div>
+                    <div class="woocommerce-tabs">
+                        <ul class="tabs">
+                            <li><a href="#tab-description">Mô tả</a></li>
+                            <li><a href="#tab-reviews">Reviews (0)</a></li>
+                        </ul>
+
+                        <div class="panel" id="tab-description">
+                            <p><%=@sach[0].mota%></p>
+                        </div>
+                        <div class="panel" id="tab-reviews">
+                            <p>No Reviews</p>
+                        </div>
+                    </div>
+                    <div class="space50">&nbsp;</div>
+                    <div class="beta-products-list">
+                        <h4>Sản phẩm tương tự</h4>
+
+                        <div class="row">
+                            <%@sachcungloai.each do |s|%>
+                                <div class="col-sm-4">
+                                    <div class="single-item">
+                                        <div class="single-item-header">
+                                            <a href="/chitiet/index/<%=s.id%>">
+                                            <%= image_tag "sach/#{s.hinhanh}", :height => "320px", :width => "240px"%>
+                                            </a>
+                                        </div>
+                                        <div class="single-item-body" style="padding-top:30px">
+                                            <p class="single-item-title" style="height:10px"><%=s.tensach%></p>
+                                            <p class="single-item-price" style="padding-top:30px; height:50px">
+                                                <span class="flash-sale"><%=s.giaban%> VND</span>
+                                            </p>
+                                        </div>
+                                        <div class="single-item-caption">
+                                            <a class="add-to-cart pull-left" href="javascript:void(0)" onclick="addCart(<%=s.id%>)"><i class="fa fa-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="/chitiet/index/<%=s.id%>">Chi tiết<i class="fa fa-chevron-right"></i></a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%end%>
+                        </div>
+                        <!--<div class="row">{{$sp_tuongtu->links()}}</div>-->
+                    </div> <!-- .beta-products-list -->
+                </div>
+                <%# <div class="col-sm-3 aside">
+                    <div class="widget">
+                        <h3 class="widget-title">Bán chạy nhất</h3>
+                        <div class="widget-body">
+                            <div class="beta-sales beta-lists">
+                                @foreach (var sp in banchay)
+                                    {
+
+                                        <div class="media beta-sales-item">
+                                            <a class="pull-left" href="/Client/Detail/Index/@sp.sp.masp"><img src="image/product/@sp.sp.hinhanh" alt=""></a>
+                                            <div class="media-body">
+                                                @sp.sp.tensp<br>
+                                                @if (@sp.sp.giakm == 0)
+                                                {
+                                                <span class="beta-sales-price">@sp.sp.gia VND</span>
+                                                }
+                                                else
+                                                {
+                                                <span class="beta-sales-price">@sp.sp.giakm VND</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                            </div>
+                        </div>
+                    </div> <!-- best sellers widget --> %>
+                    <%# <div class="widget">
+                        <h3 class="widget-title">Sản phẩm mới</h3>
+                        <div class="widget-body">
+                            <div class="beta-sales beta-lists">
+                                <div class="paginateRow">
+                                    @foreach (var sp in spmoi)
+                                    {  
+                                        <div class="media beta-sales-item">
+                                            <a class="pull-left" href="/Client/Detail/Index/@sp.masp"><img src="~/Assets/Client/image/product/@sp.hinhanh" alt=""></a>
+                                            <div class="media-body">
+                                                @sp.tensp<br>
+                                                @if (sp.giakm == 0)
+                                                {
+                                                    <span class="beta-sales-price">@sp.gia VND</span>
+                                                }
+                                                else
+                                                {
+                                                <span class="beta-sales-price">@sp.giakm VND</span>
+                                                }
+                                            </div>
+                                        </div>
+                                        <br>
+                                    }
+                                    <!--<div class="paginate">{{$sp_moi->links()}}</div>-->
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                </div> <!-- best sellers widget --> %>
+            </div>
+        </div>
+    </div> <!-- #content -->
+</div> <!-- .container -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('.paginate ul.pagination').hide();
+        $(function() {
+            $('.paginateRow').jscroll({
+                autoTrigger: true,
+                loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+                padding: 0,
+                nextSelector: '.pagination li.active + li a',
+                contentSelector: 'div.paginateRow',
+                callback: function() {
+                    $('.paginate ul.pagination').remove();
+                }
+            });
+        });
+    });
+
+    function addCart(id){
+		$.ajax({
+			url: "/home/themgiohang/" + id,
+			method: "GET",
+			data: "",
+			success: function(data){
+				if(data != null)
+				swal({
+                    title: "Thông báo",
+                    text: "Thêm sản phẩm vào giỏ hàng thành công",
+                    icon: "success",
+                    button: "Ok",
+                });
+            }
+		});
+	}
+    
+    function addMulticart(id){
+        var soluong = document.getElementById('soluong').value;
+        if(soluong <= 0)
+        swal({
+                title: "Cảnh báo",
+                text: "Số lượng bạn nhập đang nhỏ hơn hoặc bằng 0",
+                icon: "error",
+                button: "Tôi đã hiểu!",
+            });
+        else
+        $.ajax({
+            url: "/chitiet/themnhieusanpham/" + id + "/" + soluong,
+            method: "GET",
+            data:"",
+            success:function(data){
+                if(data == soluong){
+                    swal({
+                        title: "Thông báo",
+                        text: "Thêm sản phẩm vào giỏ hàng thành công",
+                        icon: "success",
+                        button: "Ok",
+                    });
+                }
+            }
+        });
+    }
+</script>

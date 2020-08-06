@@ -1,0 +1,2 @@
+class Taikhoan < ApplicationRecord
+end

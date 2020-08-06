@@ -1,0 +1,2 @@
+class Donhang < ApplicationRecord
+end

@@ -1,0 +1,59 @@
+<div class="container" style="padding-left:50px; padding-right:300px">
+    <div id="content">
+        <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-6">
+              <%if !notice.nil? && notice != 'You are already signed in.'%>
+                <p class="alert alert-info"><%= notice %></p>
+              <%end%>
+              <%if !alert.nil?%>
+                <p class="alert alert-info"><%= alert %></p>
+              <%end%>
+              <h2>Đổi mật khẩu</h2>
+
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
+
+                <div class="form-group">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="form-group">
+                  <%= f.label :password %> <i>(Quay lại nếu bạn không muốn đổi mật khẩu)</i><br />
+                  <%= f.password_field :password, autocomplete: "new-password", :class => 'form-control' %>
+                  <% if @minimum_password_length %>
+                    <br />
+                    <em><%= @minimum_password_length %> Kí tụ tối thiểu</em>
+                  <% end %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :current_password %> <i>(Chúng tôi cần mật khẩu cũ của bạn để xác thực)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "current-password", :class => 'form-control' %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.submit "Cập nhật", :class => 'btn btn-primary' %>
+                </div>
+              <% end %>
+
+              <%# <h3>Cancel my account</h3>
+
+              <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+
+              <%= link_to "Back", :back, :class => 'btn btn-primary'  %>
+              </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div> <!-- #content -->
+</div> <!-- .container -->
